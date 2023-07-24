@@ -35,12 +35,13 @@ class BoardViewController: UIViewController {
     func designButton(_ sender: UIButton, label: String){
         sender.layer.borderWidth = 2
         sender.layer.borderColor = UIColor.black.cgColor
-        sender.backgroundColor = .white
+        sender.backgroundColor = .gray
         sender.setTitle(label, for: .normal)
-        sender.setTitleColor(.systemPink, for: .normal)
+        sender.setTitleColor(.black, for: .normal)
     }
     
     func designLabel(){
+        textLabel.text = "Hello Swift"
         textLabel.textAlignment = .center
         textLabel.font = .boldSystemFont(ofSize: 60)
         textLabel.textColor = .systemPink
@@ -56,11 +57,12 @@ class BoardViewController: UIViewController {
     }
     
     @IBAction func colorChangeButtonClicked(_ sender: UIButton) {
-        if let color = colors.randomElement(){
-            textLabel.textColor = UIColor(named: color)
+        if let color = colors.randomElement() {
+            if let randomColor = UIColor(named: color){
+                textLabel.textColor = randomColor
+                colorChangeButton.setTitleColor(randomColor, for: .normal)
+            }
         }
-        
-        
     }
     
     func showText(_ text: String){
